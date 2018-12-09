@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+   <f:view>
+      <h1>#{rent.title}</h1>
+         <p:tabView>
+         <p:tab title="Add New Rent">
+         <h:form id="formRent">
+            <p:outputLabel value="User ID" /><br/>
+         <p:inputNumber binding="#{userId}" >
+         <f:convertNumber integerOnly="true"/>
+         </p:inputNumber><br/>
+            <p:outputLabel value="Username:" /><br/>
+         <p:inputText binding="#{userNameRent}" /><br/>
+            <p:outputLabel value="Vehicle ID:" /><br/>
+         <p:inputNumber binding="#{vehicleId}" >
+         <f:convertNumber integerOnly="true" />
+         </p:inputNumber><br/>
+            <p:outputLabel value="Start Date:" /><br/>
+         <p:calendar binding="#{startDate}" /><br/>
+            <p:outputLabel value="End Date:" /><br/>
+         <p:calendar binding="#{endDate}" /><br/>
+            <p:outputLabel value="Km used:" /><br/>
+         <p:inputNumber  binding="#{kmUsed}" /><br/>
+            <p:outputLabel value="Day Fee:" /><br/>
+         <p:inputNumber  binding="#{dayFee}" /><br/>
+            <p:outputLabel value="Km Fee:" /><br/>
+         <p:inputNumber  binding="#{kmFee}" /><br/>
+            <p:outputLabel value="Other Fee:" /><br/>
+         <p:inputNumber  binding="#{otherFee}" /><br/>
+            <p:outputLabel value="Total Fee:" /><br/>
+         <p:inputNumber  binding="#{totalFee}" /><br/>
+            <p:outputLabel value="Paid:" /><br/>
+         <p:selectBooleanCheckbox  value="false" label="paid" binding="#{paid}"/><br/><br/>
+         <p:commandButton value="addRent" action="#{rent.createRent(userId.value,userNameRent.value,vehicleId.value,startDate.value,endDate.value,kmUsed.value,dayFee.value,kmFee.value,otherFee.value,totalFee.value,paid.value)}" />
+            </h:form>
+         </p:tab>
+            <p:tab title="Add New User">
+               <h:form id="formUser">
+                  <p:outputLabel value="Username:" /><br/>
+               <p:inputText binding="#{userName}" /><br/>
+                  <p:outputLabel value="Address:" /><br/>
+               <p:inputText binding="#{address}" /><br/>
+                  <p:outputLabel value="Phone number:" /><br/>
+               <p:inputText binding="#{phoneNumber}" /><br/>
+                  <p:outputLabel value="User type:" /><br/>
+               <p:selectOneMenu style="width:150px" binding="#{userType}">
+                  <f:selectItems value="#{user.userTypes}" />
+               </p:selectOneMenu><br/>
+                  <p:outputLabel value="Driving Licence number:" /><br/>
+               <p:inputText binding="#{drivingLicenceNumber}" /><br/>
+                  <p:outputLabel value="Company name:" /><br/>
+               <p:inputText binding="#{companyName}" /><br/><br/>
+               <p:commandButton value="addUser" action="#{user.createUser(userName.value,address.value,phoneNumber.value,userType.value,drivingLicenceNumber.value,companyName.value)}"/>
+               </h:form>
+            </p:tab>
+            <p:tab title="Add New Vehicle">
+               <h:form id="formVehicle">
+                  <p:outputLabel value="Vehicle type:" /><br/>
+               <p:selectOneMenu style="width:150px" binding="#{vehicleType}">
+                  <f:selectItems value="#{vehicle.vehicleTypes}" />
+               </p:selectOneMenu><br/>
+                  <p:outputLabel value="Manufacturer:" /><br/>
+               <p:inputText binding="#{manufacturer}" /><br/>
+                  <p:outputLabel value="Type:" /><br/>
+               <p:inputText binding="#{type}" /><br/>
+                  <p:outputLabel value="Year of manufacture:" /><br/>
+               <p:inputNumber  binding="#{yearOfManufacture}" /><br/>
+                  <p:outputLabel value="Purchase Date:" /><br/>
+               <p:calendar  binding="#{purchaseDate}" /><br/>
+                  <p:outputLabel value="Vehicle day fee:" /><br/>
+               <p:inputText binding="#{vehicleDayFee}" /><br/>
+                  <p:outputLabel value="Vehicle Km fee:" /><br/>
+               <p:inputText binding="#{vehicleKmFee}" /><br/>
+                  <p:outputLabel value="Vehicle status:" /><br/>
+               <p:selectOneMenu style="width:150px" binding="#{vehicleStatusType}">
+                  <f:selectItems value="#{vehicle.vehicleStatusTypes}" />
+               </p:selectOneMenu><br/>
+                  <p:outputLabel value="Platenumber:" /><br/>
+               <p:inputText binding="#{plateNumber}" /><br/>
+                  <p:outputLabel value="Vehicle identification number:" /><br/>
+               <p:inputText binding="#{vehicleIdentificationNumber}" /><br/><br/>
+               <p:commandButton value="addVehicle" action="#{vehicle.createVehicle(vehicleType.value,manufacturer.value,type.value,yearOfManufacture.value,purchaseDate.value,vehicleDayFee.value,vehicleKmFee.value,vehicleStatusType.value,plateNumber.value,vehicleIdentificationNumber.value)}"/>
+               </h:form>
+            </p:tab>
+            <p:tab title="Update Rent fee">
+               <h:form>
+                  <p:outputLabel value="Rent ID:" /><br/>
+                  <p:inputNumber binding="#{rentIDu}">
+                  <f:convertNumber integerOnly="true" />
+                  </p:inputNumber><br/>
+                  <p:outputLabel value="Km used:" /><br/>
+                  <p:inputText binding="#{kmUsedu}"/><br/>
+                  <p:outputLabel value="Km Fee:" /><br/>
+                  <p:inputText binding="#{kmFeeu}"/><br/>
+                  <p:outputLabel value="Day Fee:" /><br/>
+                  <p:inputText binding="#{dayFeeu}"/><br/>
+                  <p:outputLabel value="Other Fee:" /><br/>
+                  <p:inputText binding="#{otherFeeu}"/><br/>
+                  <p:outputLabel value="Total Fee:" /><br/>
+                  <p:inputText binding="#{totalFeeu}"/><br/><br/>
+                  <p:commandButton value="Update Fee" action="#{rent.rentFeeCalculate(rentIDu.value,kmUsedu.value,kmFeeu.value,dayFeeu.value,otherFeeu.value,totalFeeu.value)}"></p:commandButton>
+               </h:form>
+            </p:tab>
+            <p:tab title="Update Rent paid">
+               <h:form>
+                  <p:outputLabel value="Rent ID:" /><br/>
+                  <p:inputNumber binding="#{rentIDp}">
+                     <f:convertNumber integerOnly="true" />
+                  </p:inputNumber><br/>
+                  <p:outputLabel value="Rent Paid:" /><br/>
+                  <p:selectBooleanCheckbox  value="false" label="paid" binding="#{paidp}"/><br/><br/>
+                  <p:commandButton value="Update paid" action="#{rent.rentPaid(rentIDp.value,paidp.value)}"></p:commandButton>
+               </h:form>
+            </p:tab>
+            <p:tab title="Update Vehicle status">
+               <h:form>
+                  <p:outputLabel value="Vehicle ID:" /><br/>
+                  <p:inputNumber binding="#{vehicleIDs}">
+                     <f:convertNumber integerOnly="true" />
+                  </p:inputNumber><br/>
+                  <p:selectOneMenu style="width:150px" binding="#{vehicleStatusTypes}">
+                     <f:selectItems value="#{vehicle.vehicleStatusTypes}" />
+                  </p:selectOneMenu><br/><br/>
+                  <p:commandButton value="Update status" action="#{vehicle.vehicleStatusChanger(vehicleIDs.value,vehicleStatusTypes.value)}"></p:commandButton>
+               </h:form>
+            </p:tab>
+            <p:tab title="Delete Rent">
+               <h:form>
+                  <p:outputLabel value="Rent ID:" /><br/>
+                  <p:inputNumber binding="#{deleteRentId}">
+                     <f:convertNumber integerOnly="true" />
+                  </p:inputNumber><br/>
+                  <p:commandButton value="Delete" action="#{rent.deleteRent(deleteRentId.value)}"></p:commandButton>
+               </h:form>
+            </p:tab>
+            <p:tab title="Delete User">
+               <h:form>
+                  <p:outputLabel value="User ID:" /><br/>
+                  <p:inputNumber binding="#{deleteUserId}">
+                     <f:convertNumber integerOnly="true" />
+                  </p:inputNumber><br/>
+                  <p:commandButton value="Delete" action="#{user.deleteUser(deleteUserId.value)}"></p:commandButton>
+               </h:form>
+            </p:tab>
+            <p:tab title="Delete Vehicle">
+               <h:form>
+                  <p:outputLabel value="Vehicle ID:" /><br/>
+                  <p:inputNumber binding="#{deleteVehicleId}">
+                     <f:convertNumber integerOnly="true" />
+                  </p:inputNumber><br/>
+                  <p:commandButton value="Delete" action="#{vehicle.deleteVehicle(deleteVehicleId.value)}"></p:commandButton>
+               </h:form>
+            </p:tab>
+         </p:tabView>
+
+      <p:tabView>
+         <p:tab title="Rents">
+            <h:form>
+            <p:commandButton value="Full List" update="dtrents"></p:commandButton>
+            <p:outputLabel value=" User ID: " />
+            <p:inputNumber binding="#{getRentByUserID}">
+               <f:convertNumber integerOnly="true" />
+            </p:inputNumber>
+            <p:commandButton value="Get Rent By User ID" actionListener="#{rent.getRentsByUserId(getRentByUserID.value)}" update="dtrents"></p:commandButton>
+            <p:outputLabel value=" Vehicle ID: " />
+            <p:inputNumber binding="#{getRentByVehicleID}">
+               <f:convertNumber integerOnly="true" />
+            </p:inputNumber>
+            <p:commandButton value="Get Rent By Vehicle ID" actionListener="#{rent.getRentsByVehicleId(getRentByVehicleID.value)}" update="dtrents"></p:commandButton>
+            <p:dataTable id="dtrents" var="rentvar" value="#{rent.rents}">
+               <p:column headerText="Id">
+                  <h:outputText value="#{rentvar.id}" />
+               </p:column>
+               <p:column headerText="User ID">
+                  <h:outputText value="#{rentvar.userId}" />
+               </p:column>
+               <p:column headerText="Username">
+                  <h:outputText value="#{rentvar.userName}" />
+               </p:column>
+               <p:column headerText="Vehicle ID">
+                  <h:outputText value="#{rentvar.vehicleId}" />
+               </p:column>
+               <p:column headerText="Start Date">
+                  <h:outputText value="#{rentvar.startDate}" />
+               </p:column>
+               <p:column headerText="End Date">
+                  <h:outputText value="#{rentvar.endDate}" />
+               </p:column>
+               <p:column headerText="Km used">
+                  <h:outputText value="#{rentvar.kmUsed}" />
+               </p:column>
+               <p:column headerText="Day Fee">
+                  <h:outputText value="#{rentvar.dayFee}" />
+               </p:column>
+               <p:column headerText="Km Fee">
+                  <h:outputText value="#{rentvar.kmFee}" />
+               </p:column>
+               <p:column headerText="Other Fee">
+                  <h:outputText value="#{rentvar.otherFee}" />
+               </p:column>
+               <p:column headerText="Total Fee">
+                  <h:outputText value="#{rentvar.totalFee}" />
+               </p:column>
+               <p:column headerText="Paid">
+                  <h:outputText value="#{rentvar.paid}" />
+               </p:column>
+            </p:dataTable>
+            </h:form>
+         </p:tab>
+         <p:tab title="Users">
+            <h:form>
+            <p:commandButton value="Full List" update="dtusers"></p:commandButton>
+            <p:outputLabel value=" User ID: " />
+            <p:inputNumber binding="#{getUserID}">
+               <f:convertNumber integerOnly="true" />
+            </p:inputNumber>
+            <p:commandButton value="Get User By ID" actionListener="#{user.getUserById(getUserID.value)}" update="dtusers"></p:commandButton>
+            <p:dataTable id="dtusers" var="uservar" value="#{user.users}">
+               <p:column headerText="Id">
+                  <h:outputText value="#{uservar.id}" />
+               </p:column>
+               <p:column headerText="Username">
+                  <h:outputText value="#{uservar.userName}" />
+               </p:column>
+               <p:column headerText="Address">
+                  <h:outputText value="#{uservar.address}" />
+               </p:column>
+               <p:column headerText="Phone number">
+                  <h:outputText value="#{uservar.phoneNumber}" />
+               </p:column>
+               <p:column headerText="User type">
+                  <h:outputText value="#{uservar.userType}" />
+               </p:column>
+               <p:column headerText="Driving Licence Number">
+                  <h:outputText value="#{uservar.drivingLicenceNumber}" />
+               </p:column>
+               <p:column headerText="Company Name">
+                  <h:outputText value="#{uservar.companyName}" />
+               </p:column>
+            </p:dataTable>
+            </h:form>
+         </p:tab>
+         <p:tab title="Vehicles">
+            <h:form>
+            <p:commandButton value="Full List" actionListener="#{vehicle.readVehiclesList()}" update="dtvehicles"></p:commandButton>
+            <p:outputLabel value=" Platenumber: " />
+            <p:inputText binding="#{plateNumberList}" />
+            <p:commandButton value="List by Platenumber" actionListener="#{vehicle.getVehiclesByPlatenumber(plateNumberList.value)}" update="dtvehicles"></p:commandButton>
+            <p:outputLabel value=" Status: " />
+            <p:selectOneMenu style="width:150px" binding="#{vehicleStatusTypeList}">
+               <f:selectItems value="#{vehicle.vehicleStatusTypes}" />
+            </p:selectOneMenu>
+            <p:commandButton value="List by Status" actionListener="#{vehicle.getVehiclesByStatus(vehicleStatusTypeList.value)}" update="dtvehicles"></p:commandButton>
+            <p:outputLabel value=" Type: " />
+            <p:inputText binding="#{vehicleTypeList}" />
+            <p:commandButton value="List by Type" actionListener="#{vehicle.getVehiclesByType(vehicleTypeList.value)}" update="dtvehicles"></p:commandButton>
+            <p:dataTable id="dtvehicles" var="vehiclevar" value="#{vehicle.vehicles}">
+               <p:column headerText="ID">
+                  <h:outputText value="#{vehiclevar.id}" />
+               </p:column>
+               <p:column headerText="Vehicle type">
+                  <h:outputText value="#{vehiclevar.vehicleType}" />
+               </p:column>
+               <p:column headerText="Manufacturer">
+                  <h:outputText value="#{vehiclevar.manufacturer}" />
+               </p:column>
+               <p:column headerText="Type">
+                  <h:outputText value="#{vehiclevar.type}" />
+               </p:column>
+               <p:column headerText="Year of manufacture">
+                  <h:outputText value="#{vehiclevar.yearOfManufacture}" />
+               </p:column>
+               <p:column headerText="Purchase date">
+                  <h:outputText value="#{vehiclevar.purchaseDate}" />
+               </p:column>
+               <p:column headerText="Vehicle day fee">
+                  <h:outputText value="#{vehiclevar.vehicleDayFee}" />
+               </p:column>
+               <p:column headerText="Vehicle Km fee">
+                  <h:outputText value="#{vehiclevar.vehicleKmFee}" />
+               </p:column>
+               <p:column headerText="Vehicle status">
+                  <h:outputText value="#{vehiclevar.vehicleStatus}" />
+               </p:column>
+               <p:column headerText="Platenumber">
+                  <h:outputText value="#{vehiclevar.plateNumber}" />
+               </p:column>
+               <p:column headerText="Vehicle Identification Number">
+                  <h:outputText value="#{vehiclevar.vehicleIdentificationNumber}" />
+               </p:column>
+            </p:dataTable>
+            </h:form>
+         </p:tab>
+      </p:tabView>
+   </f:view>
+</h:body>
+
+</html>

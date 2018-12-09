@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="InfoRendMZs:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/InfoRendMZs_war_exploded.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="InfoRendMZs/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="InfoRendMZs" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
